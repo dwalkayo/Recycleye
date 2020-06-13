@@ -1,6 +1,6 @@
 import numpy as np
 import os
-# import six.moves.urllib as urllib
+import six.moves.urllib as urllib
 import sys
 import tensorflow as tf
 import os
@@ -8,15 +8,17 @@ import pathlib
 
 from collections import defaultdict
 from io import StringIO
-# from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from PIL import Image
-# from IPython.display import display
-from urllib.request import urlopen
+#from IPython.display import display
+#from urllib.request import urlopen
 from datetime import datetime
 
 model = None
+tags  = None
 model_name = 'model'
 model_dir = pathlib.Path(model_name)
+
 
 # List of the strings that is used to add correct label for each box.
 labels_filename = os.path.join(model_dir, "labels.txt")
@@ -26,7 +28,7 @@ def initialize(model_dir = model_dir, labels_filename = labels_filename):
     #TODO - modify to take tf json
     global model, labels
 
-    model = tf.saved_model.load(str(model_dir))
+    model = tf.saved_model.load(str(model_dir)) 
     model = model.signatures['serving_default']
 
     with open(labels_filename, 'rt') as lf:
