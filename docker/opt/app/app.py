@@ -12,8 +12,6 @@ import numpy as np
 
 # Imports for prediction
 from predict import initialize, predict_image, predict_url
-from tensorflow import keras
-from keras.models import load_model
 
 class CustomJSONEncoder(JSONEncoder):
 
