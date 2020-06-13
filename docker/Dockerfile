@@ -26,4 +26,4 @@ WORKDIR /app/model
 #RUN tar -xvf ssd_mobilenet_v1_coco_2018_01_28.tar.gz ssd_mobilenet_v1_coco_2018_01_28/saved_model/saved_model.pb
 WORKDIR /app
 EXPOSE 8080
-CMD ["python3", "./app.py"]
+CMD ["python", "./app.py"]
