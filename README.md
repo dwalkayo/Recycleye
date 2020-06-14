@@ -11,3 +11,5 @@ This project seeks to containerize the mock detection app in this github repo:
 4. Multistage builds are also utilised as the dependencies are built in a base image and then imported into the application image, further slimming down the final docker image
 
 5. Finally github actions are used to both download and replace the current saved model with the coco model and subsequently build the docker image using persistent workflow techniques.
+
+A note on the docker-compose file which allows for a multi-container environment if needed and handles starting the container if necessary too after the build. The github action just builds the docker image.
