@@ -12,7 +12,7 @@ RUN pip install --install-option="--prefix=/app" -r ./requirements.txt
 
 FROM base
 
-COPY --from=builder /app /usr/local
+COPY --from=builder /app --user
 COPY ./opt/app /app
 #Download coco model and replace saved model in current working directory
 WORKDIR /app/model
