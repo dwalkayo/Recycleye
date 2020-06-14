@@ -1,11 +1,18 @@
-FROM amd64/python:3.8
+FROM amd64/python:3.8 as base 
+
+FROM base as builder 
 
 # Install dependencies
 RUN mkdir /app 
 COPY ./opt/requirements.txt /app
 WORKDIR /app
 RUN export TMPDIR='/var/tmp'
-RUN pip install -r ./requirements.txt
+
+RUN pip install --install-option="--prefix=/app" -r ./requirements.txt
+
+FROM base
+
+COPY --from=builder /app /usr/local
 COPY ./opt/app /app
 #Download coco model and replace saved model in current working directory
 WORKDIR /app/model
